@@ -12,6 +12,7 @@ import os
 import io
 import argparse
 import pandas as pd
+from sklearn.metrics import confusion_matrix
 from sklearn.metrics import classification_report
 from sklearn.metrics import f1_score
 from sklearn.model_selection import train_test_split
@@ -78,7 +79,7 @@ def main():
 			print(stdout_temp.format(epoch+1, train_acc, train_loss)) #, test_acc, test_loss))
 
 		# Save a model checkpoint.
-		if(epoch%args.save_model_interval == 0):
+		if(epoch%args.save_model_interval == 0 or epoch+1 == args.n_epoch):
 			model_ckpt_path = args.model_ckpt_path_temp.format(args.dataset_name, args.model_name, epoch+1)
 			torch.save(model.state_dict(), model_ckpt_path)
 			print('Saved a model checkpoint at {}'.format(model_ckpt_path))
@@ -138,6 +139,11 @@ def test(model, device, test_loader, criterion):
 		
 	test_acc, test_loss = calc_score(output_list, target_list, running_loss, test_loader)
 
+	print('confusion_matrix')
+	print(confusion_matrix(output_list, target_list))
+	print('classification_report')
+	print(classification_report(output_list, target_list))
+
 	return test_acc, test_loss
 
 
@@ -182,3 +188,5 @@ def parse_args():
 
 if __name__ == "__main__":
 	main()
+	print("finished successfully.")
+	os._exit(0)

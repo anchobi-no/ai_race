@@ -112,6 +112,7 @@ source /opt/ros/melodic/setup.bash
 ```
 # joint state controller, and ros package
 sudo apt install -y ros-melodic-ros-control ros-melodic-ros-controllers  ros-melodic-joint-state-controller ros-melodic-effort-controllers ros-melodic-position-controllers ros-melodic-joint-trajectory-controller
+sudo apt install ros-melodic-cob-srvs
 # gazebo
 sudo apt-get install -y gazebo9
 sudo sh -c 'echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable `lsb_release -cs` main" > /etc/apt/sources.list.d/gazebo-stable.list'
@@ -255,20 +256,31 @@ python inference_from_image.py --trt_module --trt_model $HOME/ai_race_data_sampl
 
 #### 学習モデルを作成
 
-サンプルデータを使って学習モデルを作成する場合の例。一度実行すると結構時間が掛かります。<br>
+サンプルデータを使って学習モデルを作成する場合の例。<br>
+動作確認用に`--n_epoch 3`を指定して約30分程で終わるようにしています。<br>
 
 ```
 cd ~/catkin_ws/src/ai_race/ai_race/learning/scripts
-python3 train.py --data_csv $HOME/ai_race_data_sample/dataset/plane/_2020-11-17-01-34-45/_2020-11-17-01-34-45.csv --model_name sample_model
+python3 train.py --data_csv $HOME/ai_race_data_sample/dataset/plane/_2020-11-17-01-34-45/_2020-11-17-01-34-45.csv --model_name sample_model --n_epoch 3
 ```
 
-次に、JetsonNanoに合わせて学習モデルを軽量化する。(trtあり版と呼ばれるもの) <br>
-作成した学習モデルのパスが、`$HOME/ai_race_data_sample/model/plane/sample_plane.pth` である場合の例。<br>
+`train.py`の実行ログを参照し、学習モデル(`*.pth`)ファイルが作成できていることを確認下さい。<br>
+`train.py`の引数に与えられるパラメータは以下で確認できます。`--n_epoch NN`等のパラメータは適宜調整して下さい。<br>
+
+```
+python3 train.py -h
+```
+
+#### 学習モデルの軽量化
+
+JetsonNanoに合わせて学習モデルを軽量化する。(trtあり版と呼ばれるもの) <br>
+作成した学習モデルのパスが、`$HOME/ai_race_data_sample/model/plane/sample_plane.pth` である場合の例。一度実行すると約10分程掛かります。<br>
 
 ```
 python3 trt_conversion.py --pretrained_model $HOME/ai_race_data_sample/model/plane/sample_plane.pth --trt_model sample_model_trt.pth
 ```
 
+`trt_conversion.py`の実行ログを参照し、`--trt_model`に指定したファイルが作成できていることを確認下さい。<br>
 その後は前述同様、軽量化した学習モデルを利用して推論、車両操作を行って下さい。
 
 #### 学習用データの取得 (Optional)
@@ -292,18 +304,24 @@ a 左にまがる
 d 右にまがる
 ```
 
-車両が動いている際の、画像とコマンド操作ログを取得するには以下を別ターミナルで実行する。<br>
+車両が動いている際の、画像とコマンド操作ログを取得するには以下を別ターミナルで実行します。<br>
+デフォルトでは`${HOME}`に画像とコマンド操作ログを含む`rosbag(.bag)`ファイルが出力されます。<br>
 
 ```
 roslaunch sim_environment rosbag.launch
+
+### `Ctl+C`で終了する
+### 終了後、rosbag(.bag)ファイルがあることをコマンドから確認する
+ls ${HOME}/*.bag
 ```
 
-デフォルトでは`${HOME}`に画像とコマンド操作ログを含むrosbagファイルが出力されます。<br>
-rosbagファイルを、画像とコマンドに変換するには以下を実行します。<br>
+`rosbag(.bag)`ファイルを、画像とコマンドに変換するには以下を実行します。<br>
+デフォルトでは`${HOME}/Images_from_rosbag/.`以下にファイルが出力されます。<br>
 
 ```
 cd ~/catkin_ws/src/ai_race/ai_race/utility/script
-python rosbag_to_images_and_commands.py <rosbagファイル>
+python rosbag_to_images_and_commands.py xxx.bag  # xxx.bagファイルは実在するrosbagファイルを指定する
+ls ${HOME}/Images_from_rosbag/.                  # 画像とコマンドの変換データがあること確認する
 ```
 
 以上で作成したデータを、学習モデル作成に使用下さい。
@@ -336,8 +354,7 @@ python listup_all_rosbag_timestamp.py *.bag               # 時刻表示でき�
 ## 学習 
 cd learning/scripts (学習用フォルダへ移動) 
 python3 train.py --data_csv <csvのパス フルパス指定> --model_name <保存するモデル名>  
-#### 以下のディレクトリにモデルが保存されます
-ls ~/catkin_ws/src/ai_race/ai_raceexperiments/models/checkpoints/*.pth
+#### 実行ログ記載のディレクトリにモデルが保存されます
 ```
 
 * Step3.学習モデルを使って推論、車両操作
@@ -418,7 +435,9 @@ python inference_from_image.py --trt_module --trt_model <保存したtrtモデ�
     └── stop.sh       # [大会用] 停止スクリプト
 ```
 
-### 3.4 学習モデルチューニングのはじめかた
+### 3.4 学習モデル自作のはじめかた
+
+#### 本リポジトリのfork
 
 まず、Githubアカウントを取得して本リポジトリを自リポジトリにforkして下さい。
 
@@ -429,37 +448,55 @@ python inference_from_image.py --trt_module --trt_model <保存したtrtモデ�
 > 2. ページの右上にある [Fork] をクリックします。 <br>
 > 参考：[リポジトリをフォークする](https://docs.github.com/ja/free-pro-team@latest/github/getting-started-with-github/fork-a-repo) <br>
 
-forkしたリポジトリで各々のローカル変更、チューニング等行ってください。<br>
+#### 学習用データの取得、チューニング、学習モデル作成
 
-```
-・機械学習モデルの作成を工夫する場合
-   --> train.py周りを参考にして、パラメータや各種処理の更新を行ってください。
-       変更ファイルは、運営とのconflictを避けるためにyour_environment下に格納することをお勧めします。
-・学習データの取得を工夫する場合
-   --> utility以下を参考に、手動で車両を操作して学習データを取得して下さい。
-       サイズの大きなデータは可能な限り、本リポジトリ以外でやりとりすることをお勧めします。（Githubの1ファイル最大が50MBまでという制約あり）
-```
+forkしたリポジトリで各々の学習データ取得、チューニング、学習モデル作成をしてください。<br>
+変更ファイルは、運営とのconflictを避けるために`your_environmentディレクトリ`以下に登録することをお勧めします。<br>
 
+- 学習データの取得を工夫する
+
+サンプルの`学習用データの取得`を参考に、車両を自ら操作して学習データを取得することが可能です。<br>
+`走行経路`や`入力画像のバリエーション`など、各々工夫をしてみてください。<br>
 <br>
+※ 学習データ自体はサイズが大きいため、ファイルの受渡しはgithub以外でやりとりすることをお勧めします。<br>
+　（Githubは1ファイル最大が50MBまで、1GB 以下を推奨という制約があり、大きなファイルを扱うのに適しているとはいえない）<br>
+
+- チューニング、学習モデルの作成を工夫する
+
+train.pyや周辺ファイルを参考に、各種パラメータを調整することが可能です。<br>
+機械学習アルゴリズム選定など含め、各々工夫をしてみてください。<br>
+
+#### 自リポジトリの学習モデルを公式リリースする
+
+学習モデルを公式リリースする場合は、Githubリリースの機能を使うと簡単なのでお勧めです。
+
+> 学習モデルを提出（バイナリリリース）する場合の手順参考 <br>
+> [リポジトリのリリースを管理する](https://docs.github.com/ja/free-pro-team@latest/github/administering-a-repository/managing-releases-in-a-repository) <br>
+> 7.オプションで、コンパイルされたプログラムなどのバイナリファイルをリリースに含めるには、ドラッグアンドドロップするかバイナリボックスで手動で選択します。 <br>
+
+#### 本リポジトリの最新バージョン取り込み
+
 今後、本リポジトリもバージョンアップしていく予定です。<br>
-本リポジトリのバージョンアップを取り込む場合は、以下手順を行って下さい。<br>
+本リポジトリのバージョンアップを取り込む場合は、forkしたリポジトリにて以下を実行して下さい。<br>
 
 ```
-- ローカルのmasterブランチに移動
-- fork元のリポジトリをupstream という名前でリモートリポジトリに登録（名前はなんでもいい。登録済みならスキップ）
-- upstream から最新のコードをfetch
-- upstream/master を ローカルのmaster にmerge
-```
-
-```
-git checkout master
-git remote add upstream https://github.com/seigot/ai_race
-git fetch upstream
-git merge upstream/master
+git checkout master                                        # ローカルのmasterブランチに移動
+git remote add upstream https://github.com/seigot/ai_race  # fork元のリポジトリをupstream という名前でリモートリポジトリに登録（名前はなんでもいい。登録済みならスキップ）
+git fetch upstream                                         # upstream から最新のコードをfetch
+git merge upstream/master                                  # upstream/master を ローカルのmaster にmerge
+git push                                                   # 変更を反映
 ```
 
 参考：[github で fork したリポジトリで本家に追従する](https://please-sleep.cou929.nu/track-original-at-forked-repo.html)
 
+#### Pull Requestを送る（Optional）
+
+本リポジトリへ修正リクエストを送ることが可能です。詳しくは参考をご参照下さい。<br>
+<br>
+参考：<br>
+[GitHub-プルリクエストの作成方法](https://docs.github.com/ja/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request)<br>
+[[実践] はじめてのPull Requestをやってみよう](https://qiita.com/wataryooou/items/8dce6b6d5f54ab2cef04)<br>
+[【GitHub】Pull Requestの手順](https://qiita.com/aipacommander/items/d61d21988a36a4d0e58b)<br>
 
 ## 4. ルール
 

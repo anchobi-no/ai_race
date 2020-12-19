@@ -89,6 +89,19 @@ sudo python setup.py install                            # 再インストール
 sudo python3 setup.py install                           # 再インストール
 ```
 
+動作確認済みのバージョン（Wed Nov 4時点）に戻せているかは、以下コマンドで確認可能です。
+
+```
+$ cd ~/torch2trt      # torch2trtを、git cloneしたリポジトリへ移動
+$ git log -1          # 動作確認済みのバージョン（Wed Nov 4時点）に戻せているか確認、以下ログが出ればOK
+commit d1fa6f9f20c6c4c57a9486680ab38c45d0d94ec3 (HEAD -> master, origin/master, origin/HEAD)
+Author: John <jwelsh@nvidia.com>
+Date:   Wed Nov 4 13:45:36 2020 -0500
+    Sandeepkumar skb groupnorm plugin (#437)
+    * added plugin for GroupNorm
+    Co-authored-by: sandeepkumar-skb <sandeep.skb@uber.com>
+```
+
 ## catkin_wsを再buildするにはどうすればよい？
 
 以下の通り実行して下さい。
@@ -162,5 +175,24 @@ pytorch等のライブラリバージョンを一致させることがポイン�
 各種パッケージ取得、ダウンロード時にProxyサーバ経由する必要があると思います。（例. apt-get,git,curl,必要に応じてdocker...etc）<br>
 特別な理由がなければ、Proxy環境以外での環境構築、及び利用をお勧めします。<br>
 Proxy利用自体が各ネットワーク事情に依存すると思いますので、Proxy環境で使用する場合のサポートは困難です。<br>
+
+## forkしたリポジトリに最新バージョン取り込みたい
+
+本リポジトリのバージョンアップを取り込む場合は、forkしたリポジトリにて以下を実行して下さい。
+
+```
+git checkout master                                        # ローカルのmasterブランチに移動
+git remote add upstream https://github.com/seigot/ai_race  # fork元のリポジトリをupstream という名前でリモートリポジトリに登録（名前はなんでもいい。登録済みならスキップ）
+git fetch upstream                                         # upstream から最新のコードをfetch
+git merge upstream/master                                  # upstream/master を ローカルのmaster にmerge
+git push                                                   # 変更を反映
+```
+
+参考：[github で fork したリポジトリで本家に追従する](https://please-sleep.cou929.nu/track-original-at-forked-repo.html)
+
+## `train.py/trt_conversion.py/inference_from_image.py`の実行ログの期待値がほしい
+
+[実行ログ](https://github.com/seigot/ai_race/blob/main/document/exec_log.md)に記載しました。<br>
+ただし、最新コードでは出力ログが変わることがあります。<br>
 
 ## xxx
