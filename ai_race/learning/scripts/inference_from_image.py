@@ -24,14 +24,15 @@ from PIL import Image as IMG
 
 import cv2
 from cv_bridge import CvBridge
+from samplenet import SimpleNet
 
-model = models.resnet18()
+model = SimpleNet()
 
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 def init_inference():
     global model
     global device
-    model.fc = torch.nn.Linear(512, 3)
+    #model.fc = torch.nn.Linear(512, 3)
     model.eval()
     #model.load_state_dict(torch.load(args.pretrained_model))
     
