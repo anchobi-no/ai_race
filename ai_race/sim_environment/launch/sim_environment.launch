@@ -10,7 +10,20 @@
       <arg name="track_name" value="medium_track_plane.world" />
       <arg name="gui" value="$(arg gui)" />
       <arg name="controller" value="$(arg controller)" />
+      <arg name="dynamic_recon" value="false" />
+      <arg name="with_auto_recovery" value="false" />
     </include>  
+  </group>
+
+  <!-- level 1t (level1 advanced) -->
+  <group if="$(eval level=='1t')">
+    <include file="$(find sim_environment)/launch/wheel_robot_with_surveillance.launch">
+      <arg name="track_name" value="medium_track_plane_w_transparent_wall.world" />
+      <arg name="gui" value="$(arg gui)" />
+      <arg name="controller" value="$(arg controller)" />
+      <arg name="dynamic_recon" value="True" />
+      <arg name="with_auto_recovery" value="true" />
+    </include>
   </group>
 
   <!-- level 1a (level1 advanced) -->
@@ -20,10 +33,8 @@
       <arg name="gui" value="$(arg gui)" />
       <arg name="controller" value="$(arg controller)" />
       <arg name="dynamic_recon" value="True" />
+      <arg name="with_auto_recovery" value="true" />
     </include>
-    <rosparam file="$(find sim_environment)/config/respown_point.yaml" command="load" />
-    <node pkg="sim_environment" type="detect_stack.py" name="detect_stack" output="screen" /> 
-    <node pkg="sim_environment" type="jugemu_new.py" name="jugemu_new" output="screen" />
   </group>
   
   <!-- level 2 (if you want to run , set launch arg level=2 --> 
@@ -32,6 +43,8 @@
       <arg name="track_name" value="medium_track.world" />
       <arg name="gui" value="$(arg gui)" />
       <arg name="controller" value="$(arg controller)" />
+      <arg name="dynamic_recon" value="false" />
+      <arg name="with_auto_recovery" value="false" />
     </include>  
   </group>
 
@@ -41,6 +54,8 @@
       <arg name="track_name" value="hard_track.world" />
       <arg name="gui" value="$(arg gui)" />
       <arg name="controller" value="$(arg controller)" />
+      <arg name="dynamic_recon" value="false" />
+      <arg name="with_auto_recovery" value="false" />
     </include>  
   </group>
 

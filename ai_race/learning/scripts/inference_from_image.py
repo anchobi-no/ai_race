@@ -24,23 +24,24 @@ from PIL import Image as IMG
 
 import cv2
 from cv_bridge import CvBridge
-from samplenet import *
 
-model = SimpleNet()
+from samplenet import SampleNet, SimpleNet
+
+model = None
 
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 def init_inference():
     global model
     global device
-	if args.model == 'resnet18':
-		model = models.resnet18()
-		model.fc = torch.nn.Linear(512, 3)
-	elif args.model == 'samplenet':
-		model = SampleNet()
-	elif args.model == 'simplenet':
-		model = SimpleNet()
-	else:
-		raise NotImplementedError()
+    if args.model == 'resnet18':
+        model = models.resnet18()
+        model.fc = torch.nn.Linear(512, 3)
+    elif args.model == 'samplenet':
+        model = SampleNet()
+    elif args.model == 'simplenet':
+        model = SimpleNet()
+    else:
+        raise NotImplementedError()
     model.eval()
     #model.load_state_dict(torch.load(args.pretrained_model))
     
@@ -102,7 +103,7 @@ def set_throttle_steer(data):
     
     output = np.argmax(outputs_np, axis=1)
     print(output)
-    #time.sleep(0.05)
+    
     #angular_z = (float(output)-256)/100
     angular_z = (float(output)-1)
     twist.linear.x = 1.6
@@ -131,11 +132,11 @@ def parse_args():
 	# Set arguments.
 	arg_parser = argparse.ArgumentParser(description="Autonomous with inference")
 	
+	arg_parser.add_argument("--model", type=str, default='resnet18')
 	arg_parser.add_argument("--trt_conversion", action='store_true')
 	arg_parser.add_argument("--trt_module", action='store_true')
 	arg_parser.add_argument("--pretrained_model", type=str, default='/home/shiozaki/work/experiments/models/checkpoints/sim_race_joycon_ResNet18_6_epoch=20.pth')
 	arg_parser.add_argument("--trt_model", type=str, default='road_following_model_trt.pth' )
-	arg_parser.add_argument("--model", type=str, default='resnet18' )
 
 	args = arg_parser.parse_args()
 

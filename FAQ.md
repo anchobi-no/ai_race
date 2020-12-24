@@ -127,6 +127,26 @@ catkin build
 source devel/setup.bash
 ```
 
+## level1t(with透明壁),level1a(advance)の初回起動前にcatkin_wsを再buildするにはどうすればよい？
+
+以下を実施して下さい。level1t,1a用に追加した機能を有効化するために必要です。<br>
+（コースアウト検知機能のためにcatkin再build、自動復帰機能のためにros-melodic-cob-srvs、が必要）<br>
+<br>
+`~/catkin_ws`以下を、再度catkin buildする場合
+
+```
+cd ~/catkin_ws
+catkin clean -y
+catkin build
+source devel/setup.bash
+```
+
+加えて、以下パッケージのインストールも必要です。
+
+```
+sudo apt install -y ros-melodic-cob-srvs
+```
+
 ## 1～2時間着手するならどのあたりが良いか。
 機械学習の学習モデル生成パラメータ／ネットワーク検討周りがよいと思います。<br>
 学習モデル生成はepoch回数により時間が掛かるので、コマンド実行後はJetsonに後は任せるなど工夫下さい。<br>
@@ -181,10 +201,10 @@ Proxy利用自体が各ネットワーク事情に依存すると思いますの
 本リポジトリのバージョンアップを取り込む場合は、forkしたリポジトリにて以下を実行して下さい。
 
 ```
-git checkout master                                        # ローカルのmasterブランチに移動
+git checkout main                                          # ローカルのmainブランチに移動
 git remote add upstream https://github.com/seigot/ai_race  # fork元のリポジトリをupstream という名前でリモートリポジトリに登録（名前はなんでもいい。登録済みならスキップ）
 git fetch upstream                                         # upstream から最新のコードをfetch
-git merge upstream/master                                  # upstream/master を ローカルのmaster にmerge
+git merge upstream/main                                    # upstream/main を ローカルのmaster にmerge
 git push                                                   # 変更を反映
 ```
 
