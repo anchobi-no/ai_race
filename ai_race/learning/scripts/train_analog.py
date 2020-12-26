@@ -18,7 +18,7 @@ from sklearn.metrics import classification_report
 from sklearn.metrics import f1_score
 from sklearn.model_selection import train_test_split
 from MyDataSet import MyDataset
-from samplenet_analog import SampleNet
+from samplenet_analog import SampleNet, SimpleNet
 
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + "/../config")
 import learning_config
@@ -46,6 +46,8 @@ def main():
 		model.fc = torch.nn.Linear(512, DISCRETIZATION)
 	elif args.model == 'samplenet':
 		model = SampleNet()
+	elif args.model == 'simplenet':
+		model = SimpleNet()
 	else:
 		raise NotImplementedError()
 	model.train()
