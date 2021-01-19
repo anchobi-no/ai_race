@@ -32,6 +32,7 @@ class keyboardController:
         rospy.init_node('keyboard_con_node', anonymous=True)
         self.twist_pub = rospy.Publisher('cmd_vel', Twist, queue_size=1)
         self.image_sub = rospy.Subscriber('front_camera/image_raw', Image, self.callback)
+        self.modelstates_sub = rospy.Subscriber("/gazebo/model_states", ModelStates, self.xy_update, queue_size = 10)
         
         #ボタン関係の初期化
         self.current_button = -1
