@@ -21,11 +21,16 @@ from sklearn.metrics import classification_report
 from sklearn.metrics import f1_score
 from sklearn.model_selection import train_test_split
 from ShioDataSet import MyDataset
-from samplenet import *
+from samplenet_analog import *
 from trainingdata import *
 from testreport import *
 
 import numpy as np
+
+sys.path.append(os.path.dirname(os.path.abspath(__file__)) + "/../config")
+import learning_config
+
+DISCRETIZATION = learning_config.Discretization_number
 
 Trepo = TestReport()
 def main():
@@ -47,7 +52,7 @@ def main():
 	# Set a model.
 	if args.model == 'resnet18':
 		model = models.resnet18()
-		model.fc = torch.nn.Linear(512, 3)
+		model.fc = torch.nn.Linear(512, DISCRETIZATION)
 	elif args.model == 'samplenet':
 		model = SampleNet()
 	elif args.model == 'simplenet':
