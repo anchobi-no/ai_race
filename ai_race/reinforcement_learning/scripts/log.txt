@@ -1,0 +1,2087 @@
++ set -e
++ set -u
++ LEVEL=1
++ GAME_TIME=240
++ TIME_MODE=2
++ PACKAGE_NAME=your_environment
++ WITH_GUI=true
++ WITH_CONTROLLER=false
++ getopts l:p:t:g:c: OPT
++ case $OPT in
++ WITH_GUI=False
++ getopts l:p:t:g:c: OPT
++ case $OPT in
++ LEVEL=1s
++ getopts l:p:t:g:c: OPT
++ echo 'start prepare.sh'
+start prepare.sh
++ echo 'LEVEL: 1s'
+LEVEL: 1s
++ echo 'PACKAGE_NAME: your_environment'
+PACKAGE_NAME: your_environment
++ echo 'GAME_TIME: 240'
+GAME_TIME: 240
++ echo 'TIME_MODE: 2 (1:SYSTEM TIME/2:ROS Time)'
+TIME_MODE: 2 (1:SYSTEM TIME/2:ROS Time)
++ echo 'WITH_GUI: False'
+WITH_GUI: False
++ echo 'WITH_CONTROLLER: false'
+WITH_CONTROLLER: false
++ output_warning 1s
++ local LEVEL=1s
++ local CNT=0
++ echo ---
+---
++ '[' 1s '!=' 1 ']'
++ array=(ros-melodic-cob-srvs)
++ for e in ${array[@]}
++ dpkg -l
++ grep --quiet ros-melodic-cob-srvs
+dpkg-query: エラー: '<標準出力>' への書き込みエラーです: Broken pipe
++ echo ---
+---
++ gnome-terminal -- python3 ../judge/judgeServer.py --gametime 240 --timemode 2
++ sleep 1
++ gnome-terminal -- python3 ../judge/timer.py
++ roslaunch your_environment sim_environment.launch level:=1s gui:=False controller:=false
+[31mWARNING: disk usage in log directory [/home/sakamoto/.ros/log] is over 1GB.
+It's recommended that you use the 'rosclean' command.[0m
+warning: Deprecated: xacro tag 'property' w/o 'xacro:' xml namespace prefix (will be forbidden in Noetic)
+when processing file: /home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/urdf/wheel.urdf.xacro
+included from: /home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/urdf/wheel_robot.urdf.xacro
+Use the following command to fix incorrect tag usage:
+find . -iname "*.xacro" | xargs sed -i 's#<\([/]\?\)\(if\|unless\|include\|arg\|property\|macro\|insert_block\)#<\1xacro:\2#g'
+
+warning: xacro.py is deprecated; please use xacro instead
+warning: Deprecated: xacro tag 'property' w/o 'xacro:' xml namespace prefix (will be forbidden in Noetic)
+when processing file: /home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/urdf/surveillance_camera.urdf.xacro
+Use the following command to fix incorrect tag usage:
+find . -iname "*.xacro" | xargs sed -i 's#<\([/]\?\)\(if\|unless\|include\|arg\|property\|macro\|insert_block\)#<\1xacro:\2#g'
+
+warning: xacro.py is deprecated; please use xacro instead
+warning: Deprecated: xacro tag 'property' w/o 'xacro:' xml namespace prefix (will be forbidden in Noetic)
+when processing file: /home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/urdf/godeye.urdf.xacro
+Use the following command to fix incorrect tag usage:
+find . -iname "*.xacro" | xargs sed -i 's#<\([/]\?\)\(if\|unless\|include\|arg\|property\|macro\|insert_block\)#<\1xacro:\2#g'
+
+warning: xacro.py is deprecated; please use xacro instead
+warning: Deprecated: xacro tag 'property' w/o 'xacro:' xml namespace prefix (will be forbidden in Noetic)
+when processing file: /home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/urdf/godeye_perspective2.urdf.xacro
+Use the following command to fix incorrect tag usage:
+find . -iname "*.xacro" | xargs sed -i 's#<\([/]\?\)\(if\|unless\|include\|arg\|property\|macro\|insert_block\)#<\1xacro:\2#g'
+
+warning: xacro.py is deprecated; please use xacro instead
+... logging to /home/sakamoto/.ros/log/be2f37dc-8db0-11eb-8674-50465d752e9b/roslaunch-shiozaki-System-Product-Name-24875.log
+Checking log directory for disk usage. This may take a while.
+Press Ctrl-C to interrupt
+]2;/home/sakamoto/catkin_ws/src/ai_race/ai_race/your_environment/launch/sim_environment.launch
+[1mstarted roslaunch server http://shiozaki-System-Product-Name:34579/[0m
+
+SUMMARY
+========
+
+PARAMETERS
+ * /camera_description: <?xml version="1....
+ * /front_left_hinge_position_controller/joint: front_left_hinge_...
+ * /front_left_hinge_position_controller/pid/d: 0.1
+ * /front_left_hinge_position_controller/pid/i: 0.01
+ * /front_left_hinge_position_controller/pid/p: 1.5
+ * /front_left_hinge_position_controller/type: effort_controller...
+ * /front_left_wheel_velocity_controller/joint: front_left_wheel_...
+ * /front_left_wheel_velocity_controller/pid/d: 0.0
+ * /front_left_wheel_velocity_controller/pid/i: 0.0
+ * /front_left_wheel_velocity_controller/pid/i_clamp: 0.0
+ * /front_left_wheel_velocity_controller/pid/p: 1.0
+ * /front_left_wheel_velocity_controller/type: effort_controller...
+ * /front_right_hinge_position_controller/joint: front_right_hinge...
+ * /front_right_hinge_position_controller/pid/d: 0.1
+ * /front_right_hinge_position_controller/pid/i: 0.01
+ * /front_right_hinge_position_controller/pid/p: 1.5
+ * /front_right_hinge_position_controller/type: effort_controller...
+ * /front_right_wheel_velocity_controller/joint: front_right_wheel...
+ * /front_right_wheel_velocity_controller/pid/d: 0.0
+ * /front_right_wheel_velocity_controller/pid/i: 0.0
+ * /front_right_wheel_velocity_controller/pid/i_clamp: 0.0
+ * /front_right_wheel_velocity_controller/pid/p: 1.0
+ * /front_right_wheel_velocity_controller/type: effort_controller...
+ * /gazebo/enable_ros_network: True
+ * /godeye_description: <?xml version="1....
+ * /godeye_perspective_description: <?xml version="1....
+ * /joint_state_controller/publish_rate: 50
+ * /joint_state_controller/type: joint_state_contr...
+ * /rear_left_wheel_velocity_controller/joint: rear_left_wheel_j...
+ * /rear_left_wheel_velocity_controller/pid/d: 0.0
+ * /rear_left_wheel_velocity_controller/pid/i: 0.0
+ * /rear_left_wheel_velocity_controller/pid/i_clamp: 0.0
+ * /rear_left_wheel_velocity_controller/pid/p: 1.0
+ * /rear_left_wheel_velocity_controller/type: effort_controller...
+ * /rear_right_wheel_velocity_controller/joint: rear_right_wheel_...
+ * /rear_right_wheel_velocity_controller/pid/d: 0.0
+ * /rear_right_wheel_velocity_controller/pid/i: 0.0
+ * /rear_right_wheel_velocity_controller/pid/i_clamp: 0.0
+ * /rear_right_wheel_velocity_controller/pid/p: 1.0
+ * /rear_right_wheel_velocity_controller/type: effort_controller...
+ * /robot_description: <?xml version="1....
+ * /robot_state_publisher/publish_frequency: 50
+ * /rosdistro: melodic
+ * /rosversion: 1.14.9
+ * /use_sim_time: True
+
+NODES
+  /
+    add_arrow (sim_environment/command_Superimposition.py)
+    camera_spawn (gazebo_ros/spawn_model)
+    controller_manager (controller_manager/spawner)
+    course_out_surveillance (sim_environment/course_out_surveillance.py)
+    dynamic_recon_server_node (sim_environment/dynamic_recon_server.py)
+    gazebo (gazebo_ros/gzserver)
+    godeye_perspective_spawn (gazebo_ros/spawn_model)
+    godeye_spawn (gazebo_ros/spawn_model)
+    image_view (image_view/image_view)
+    image_view_godeye_camera (image_view/image_view)
+    image_view_godeye_camera_perspective (image_view/image_view)
+    judge_communication_d (sim_environment/judge_communication_d.py)
+    jugemu (sim_environment/jugemu.py)
+    robot_state_publisher (robot_state_publisher/robot_state_publisher)
+    servo_commands (sim_environment/servo_commands.py)
+    timing_surveillance (sim_environment/timing_surveillance.py)
+    wheel_robot_spawn (gazebo_ros/spawn_model)
+    window_management (sim_environment/window_management2.py)
+
+auto-starting new master
+[1mprocess[master]: started with pid [24897][0m
+[1mROS_MASTER_URI=http://localhost:11311[0m
+]2;/home/sakamoto/catkin_ws/src/ai_race/ai_race/your_environment/launch/sim_environment.launch http://localhost:11[0m[ INFO] [1616707583.793397308]: Finished loading Gazebo ROS API Plugin.[0m
+[0m[ INFO] [1616707583.794816721]: waitForService: Service [/gazebo/set_physics_properties] has not been advertised, waiting...[0m
+[1;33mWarning [parser.cc:950][0m XML Element[material], child of element[link] not defined in SDF. Ignoring[material]. You may have an incorrect SDF file, or an sdformat version that doesn't support this element.
+[1;33mWarning [parser.cc:950][0m XML Element[material], child of element[link] not defined in SDF. Ignoring[material]. You may have an incorrect SDF file, or an sdformat version that doesn't support this element.
+[1;33mWarning [parser.cc:950][0m XML Element[material], child of element[link] not defined in SDF. Ignoring[material]. You may have an incorrect SDF file, or an sdformat version that doesn't support this element.
+[1;33mWarning [parser.cc:950][0m XML Element[material], child of element[link] not defined in SDF. Ignoring[material]. You may have an incorrect SDF file, or an sdformat version that doesn't support this element.
+[INFO] [1616707584.282589, 0.000000]: Loading model XML from ros parameter camera_description
+[INFO] [1616707584.287207, 0.000000]: Waiting for service /gazebo/spawn_urdf_model
+[INFO] [1616707584.590833, 0.077000]: Calling service /gazebo/spawn_urdf_model
+[INFO] [1616707584.732499, 0.148000]: Spawn status: SpawnModel: Successfully spawned entity
+[33m[ WARN] [1616707585.406492190, 0.148000000]: Deprecated syntax, please prepend 'hardware_interface/' to 'EffortJointInterface' within the <hardwareInterface> tag in joint 'front_left_hinge_joint'.[0m
+[31m[ERROR] [1616707585.406549756, 0.148000000]: This robot has a joint named "front_left_hinge_joint" which is not in the gazebo model.[0m
+[31m[FATAL] [1616707585.406611677, 0.148000000]: Could not initialize robot simulation interface[0m
+[INFO] [1616707584.290029, 0.000000]: Loading model XML from ros parameter robot_description
+[INFO] [1616707584.298978, 0.000000]: Waiting for service /gazebo/spawn_urdf_model
+[INFO] [1616707584.603021, 0.089000]: Calling service /gazebo/spawn_urdf_model
+[INFO] [1616707585.690013, 0.346000]: Spawn status: SpawnModel: Successfully spawned entity
+[33m[ WARN] [1616707586.393987162, 0.346000000]: Deprecated syntax, please prepend 'hardware_interface/' to 'EffortJointInterface' within the <hardwareInterface> tag in joint 'front_left_hinge_joint'.[0m
+[33m[ WARN] [1616707586.394699467, 0.346000000]: Deprecated syntax, please prepend 'hardware_interface/' to 'EffortJointInterface' within the <hardwareInterface> tag in joint 'front_right_hinge_joint'.[0m
+[33m[ WARN] [1616707586.395038882, 0.346000000]: Deprecated syntax, please prepend 'hardware_interface/' to 'EffortJointInterface' within the <hardwareInterface> tag in joint 'front_right_wheel_joint'.[0m
+[33m[ WARN] [1616707586.395356779, 0.346000000]: Deprecated syntax, please prepend 'hardware_interface/' to 'EffortJointInterface' within the <hardwareInterface> tag in joint 'front_left_wheel_joint'.[0m
+[33m[ WARN] [1616707586.395675499, 0.346000000]: Deprecated syntax, please prepend 'hardware_interface/' to 'EffortJointInterface' within the <hardwareInterface> tag in joint 'rear_right_wheel_joint'.[0m
+[33m[ WARN] [1616707586.395991526, 0.346000000]: Deprecated syntax, please prepend 'hardware_interface/' to 'EffortJointInterface' within the <hardwareInterface> tag in joint 'rear_left_wheel_joint'.[0m
+[0m[ INFO] [1616707584.494221252]: waitForService: Service [/gazebo/set_physics_properties] is now available.[0m
+[0m[ INFO] [1616707584.536844844, 0.026000000]: Physics dynamic reconfigure ready.[0m
+[0m[ INFO] [1616707585.206923698, 0.148000000]: Camera Plugin: Using the 'robotNamespace' param: '/'[0m
+[0m[ INFO] [1616707585.210345874, 0.148000000]: Camera Plugin (ns = /)  <tf_prefix_>, set to ""[0m
+[0m[ INFO] [1616707585.281517126, 0.148000000]: Loading gazebo_ros_control plugin[0m
+[0m[ INFO] [1616707585.281627139, 0.148000000]: Starting gazebo_ros_control plugin in namespace: /[0m
+[0m[ INFO] [1616707585.282752278, 0.148000000]: gazebo_ros_control plugin is waiting for model URDF in parameter [robot_description] on the ROS param server.[0m
+[0m[ INFO] [1616707586.275674381, 0.346000000]: Camera Plugin: Using the 'robotNamespace' param: '/'[0m
+[0m[ INFO] [1616707586.277639244, 0.346000000]: Camera Plugin (ns = /)  <tf_prefix_>, set to ""[0m
+[0m[ INFO] [1616707586.290516115, 0.346000000]: Loading gazebo_ros_control plugin[0m
+[0m[ INFO] [1616707586.290571141, 0.346000000]: Starting gazebo_ros_control plugin in namespace: /[0m
+[0m[ INFO] [1616707586.399814417, 0.346000000]: Loaded gazebo_ros_control.[0m
+[1;33mWarning [parser_urdf.cc:1119][0m multiple inconsistent <gravity> exists due to fixed joint reduction overwriting previous value [true] with [false].
+[1;33mWarning [parser_urdf.cc:1119][0m multiple inconsistent <gravity> exists due to fixed joint reduction overwriting previous value [false] with [true].
+[INFO] [1616707584.298653, 0.000000]: Loading model XML from ros parameter godeye_perspective_description
+[INFO] [1616707584.302126, 0.000000]: Waiting for service /gazebo/spawn_urdf_model
+[INFO] [1616707584.605554, 0.092000]: Calling service /gazebo/spawn_urdf_model
+[INFO] [1616707586.640378, 0.549000]: Spawn status: SpawnModel: Successfully spawned entity
+Exception in thread Thread-5:
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/threading.py", line 801, in __bootstrap_inner
+    self.run()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/timer.py", line 234, in run
+    self._callback(TimerEvent(last_expected, last_real, current_expected, current_real, last_duration))
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/judge_communication_d.py", line 46, in postRosTimerCallback
+    res = self.httpPostReqToURL(url, req_data)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/judge_communication_d.py", line 36, in httpPostReqToURL
+    headers={'Content-Type': 'application/json'}
+  File "/usr/local/lib/python2.7/dist-packages/requests/api.py", line 119, in post
+    return request('post', url, data=data, json=json, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/requests/api.py", line 61, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/requests/sessions.py", line 542, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/requests/sessions.py", line 677, in send
+    history = [resp for resp in gen]
+  File "/usr/local/lib/python2.7/dist-packages/requests/sessions.py", line 245, in resolve_redirects
+    **adapter_kwargs
+  File "/usr/local/lib/python2.7/dist-packages/requests/sessions.py", line 655, in send
+    r = adapter.send(request, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/requests/adapters.py", line 510, in send
+    raise ProxyError(e, request=request)
+ProxyError: HTTPConnectionPool(host='proxy.mei.co.jp', port=8080): Max retries exceeded with url: http://10.74.66.40 (Caused by ProxyError('Cannot connect to proxy.', error(104, 'Connection reset by peer')))
+
+[ERROR] [1616707586.714567, 0.549000]: bad callback: <bound method JudgeCommunicationd.tryCourseRecoveryCallback of <__main__.JudgeCommunicationd object at 0x7f9974caf390>>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/judge_communication_d.py", line 58, in tryCourseRecoveryCallback
+    dic = json.loads(state.data)
+  File "/usr/lib/python2.7/json/__init__.py", line 339, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib/python2.7/json/decoder.py", line 364, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib/python2.7/json/decoder.py", line 382, in raw_decode
+    raise ValueError("No JSON object could be decoded")
+ValueError: No JSON object could be decoded
+
+[33m[ WARN] [1616707587.042909132, 0.549000000]: Deprecated syntax, please prepend 'hardware_interface/' to 'EffortJointInterface' within the <hardwareInterface> tag in joint 'front_left_hinge_joint'.[0m
+[31m[ERROR] [1616707587.042973061, 0.549000000]: This robot has a joint named "front_left_hinge_joint" which is not in the gazebo model.[0m
+[31m[FATAL] [1616707587.042997849, 0.549000000]: Could not initialize robot simulation interface[0m
+[0m[ INFO] [1616707586.851197387, 0.549000000]: Camera Plugin: Using the 'robotNamespace' param: '/'[0m
+[0m[ INFO] [1616707586.853098987, 0.549000000]: Camera Plugin (ns = /)  <tf_prefix_>, set to ""[0m
+[0m[ INFO] [1616707586.940384561, 0.549000000]: Loading gazebo_ros_control plugin[0m
+[0m[ INFO] [1616707586.940470404, 0.549000000]: Starting gazebo_ros_control plugin in namespace: /[0m
+[1;33mWarning [parser_urdf.cc:1119][0m multiple inconsistent <gravity> exists due to fixed joint reduction overwriting previous value [true] with [false].
+[1;33mWarning [parser_urdf.cc:1119][0m multiple inconsistent <gravity> exists due to fixed joint reduction overwriting previous value [false] with [true].
+[INFO] [1616707584.314144, 0.000000]: Loading model XML from ros parameter godeye_description
+[INFO] [1616707584.317818, 0.000000]: Waiting for service /gazebo/spawn_urdf_model
+[INFO] [1616707584.621124, 0.096000]: Calling service /gazebo/spawn_urdf_model
+[INFO] [1616707587.268930, 0.750000]: Spawn status: SpawnModel: Successfully spawned entity
+[33m[ WARN] [1616707587.471290663, 0.750000000]: Deprecated syntax, please prepend 'hardware_interface/' to 'EffortJointInterface' within the <hardwareInterface> tag in joint 'front_left_hinge_joint'.[0m
+[31m[ERROR] [1616707587.471360837, 0.750000000]: This robot has a joint named "front_left_hinge_joint" which is not in the gazebo model.[0m
+[31m[FATAL] [1616707587.471399547, 0.750000000]: Could not initialize robot simulation interface[0m
+[ERROR] [1616707587.571134, 0.849000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 28, in start_trigger
+    godeye_id = subprocess.check_output(['xdotool search --onlyvisible --name "/godeye_camera/image_raw"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "/godeye_camera/image_raw"']' returned non-zero exit status 1
+
+[ERROR] [1616707587.618595, 0.895000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 28, in start_trigger
+    godeye_id = subprocess.check_output(['xdotool search --onlyvisible --name "/godeye_camera/image_raw"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "/godeye_camera/image_raw"']' returned non-zero exit status 1
+
+[ERROR] [1616707587.753915, 1.029000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+Exception in thread Thread-4:
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/threading.py", line 801, in __bootstrap_inner
+    self.run()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/timer.py", line 234, in run
+    self._callback(TimerEvent(last_expected, last_real, current_expected, current_real, last_duration))
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/judge_communication_d.py", line 50, in publishGameStateCallback
+    resp = requests.get(self.judge_url)
+  File "/usr/local/lib/python2.7/dist-packages/requests/api.py", line 76, in get
+    return request('get', url, params=params, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/requests/api.py", line 61, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/requests/sessions.py", line 542, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/requests/sessions.py", line 677, in send
+    history = [resp for resp in gen]
+  File "/usr/local/lib/python2.7/dist-packages/requests/sessions.py", line 245, in resolve_redirects
+    **adapter_kwargs
+  File "/usr/local/lib/python2.7/dist-packages/requests/sessions.py", line 655, in send
+    r = adapter.send(request, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/requests/adapters.py", line 510, in send
+    raise ProxyError(e, request=request)
+ProxyError: HTTPConnectionPool(host='proxy.mei.co.jp', port=8080): Max retries exceeded with url: http://10.74.66.40 (Caused by ProxyError('Cannot connect to proxy.', error(104, 'Connection reset by peer')))
+
+[ERROR] [1616707587.851075, 1.126000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707587.948916, 1.225000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707588.046777, 1.322000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707588.147889, 1.423000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707588.243571, 1.517000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707588.347288, 1.621000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707588.451730, 1.726000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707588.552084, 1.825000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707588.652367, 1.924000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707588.744395, 2.015000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707588.855358, 2.124000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707588.957967, 2.226000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707589.055851, 2.324000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707589.156774, 2.425000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707589.253796, 2.521000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707589.359200, 2.627000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707589.455143, 2.722000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707589.548860, 2.813000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707589.656386, 2.922000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707589.762302, 3.027000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707589.858054, 3.122000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707589.959370, 3.223000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707590.057460, 3.320000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707590.157227, 3.419000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707590.265314, 3.527000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707590.365491, 3.627000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707590.463771, 3.724000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707590.561695, 3.818000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707590.670746, 3.927000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707590.760647, 4.013000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707590.868189, 4.120000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707590.972237, 4.222000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707591.075444, 4.326000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707591.175032, 4.426000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707591.268828, 4.520000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707591.376652, 4.627000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707591.476901, 4.726000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707591.575133, 4.823000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707591.677093, 4.925000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707591.778030, 5.025000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707591.878181, 5.125000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707591.977578, 5.223000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707592.077593, 5.322000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707592.183078, 5.427000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707592.272630, 5.514000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707592.380488, 5.621000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707592.478731, 5.717000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707592.585425, 5.824000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707592.686507, 5.926000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707592.785587, 6.025000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707592.879820, 6.117000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707592.963925, 6.200000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707593.088762, 6.325000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707593.187991, 6.423000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707593.272896, 6.506000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707593.373396, 6.607000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707593.492187, 6.726000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707593.586132, 6.819000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707593.669213, 6.901000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707593.788951, 7.022000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707593.887317, 7.121000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707593.983525, 7.216000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707594.068726, 7.301000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707594.188093, 7.422000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707594.285280, 7.518000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707594.381296, 7.612000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707594.470065, 7.700000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707594.587869, 7.818000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707594.688162, 7.916000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707594.796036, 8.025000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707594.891141, 8.117000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707594.994403, 8.220000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707595.095299, 8.321000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707595.194105, 8.417000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707595.301159, 8.526000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707595.398482, 8.624000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707595.499558, 8.724000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707595.597273, 8.822000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707595.703270, 8.929000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707595.797053, 9.021000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707595.896758, 9.119000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707596.002791, 9.226000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707596.099638, 9.321000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707596.197716, 9.419000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707596.301407, 9.523000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707596.401392, 9.621000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707596.504718, 9.725000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707596.601883, 9.818000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707596.703925, 9.920000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707596.801801, 10.018000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707596.910299, 10.127000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707597.007212, 10.224000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707597.107634, 10.322000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707597.187922, 10.403000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707597.299764, 10.513000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707597.412031, 10.627000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707597.498363, 10.714000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707597.586460, 10.800000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707597.707735, 10.922000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707597.809640, 11.024000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707597.905136, 11.116000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707598.014704, 11.225000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707598.114663, 11.324000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707598.191328, 11.399000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707598.315552, 11.525000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707598.416473, 11.624000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707598.495737, 11.703000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707598.595479, 11.803000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707598.718165, 11.925000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707598.814877, 12.023000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707598.896075, 12.104000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707599.004288, 12.211000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707599.119751, 12.328000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707599.211880, 12.420000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707599.293361, 12.500000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707599.406989, 12.614000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707599.521752, 12.727000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707599.600050, 12.806000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707599.697063, 12.903000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707599.816636, 13.022000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707599.910916, 13.116000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707599.999338, 13.201000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707600.124221, 13.325000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707600.223957, 13.426000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707600.299552, 13.500000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707600.412633, 13.611000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707600.531310, 13.731000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707600.602581, 13.802000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707600.704210, 13.903000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707600.825992, 14.022000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707600.916943, 14.113000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707601.009141, 14.205000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707601.124193, 14.321000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707601.224766, 14.421000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707601.325287, 14.522000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707601.418832, 14.616000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707601.507904, 14.704000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707601.615535, 14.812000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707601.721613, 14.916000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707601.829094, 15.023000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707601.928869, 15.121000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707602.007679, 15.201000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707602.109602, 15.301000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707602.224545, 15.415000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707602.331051, 15.523000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707602.428770, 15.617000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707602.519212, 15.706000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707602.614168, 15.801000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707602.732708, 15.921000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707602.832722, 16.020000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707602.942370, 16.129000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707603.016509, 16.202000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707603.119004, 16.304000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707603.234568, 16.418000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707603.337714, 16.521000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707603.424885, 16.609000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707603.519895, 16.704000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+[ERROR] [1616707603.625332, 16.808000]: bad callback: <function start_trigger at 0x7f273f2425d0>
+Traceback (most recent call last):
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/topics.py", line 750, in _invoke_callback
+    cb(msg)
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/window_management2.py", line 29, in start_trigger
+    stopwatch_id = subprocess.check_output(['xdotool search --onlyvisible --name "Python Stop watch"'], shell=True)
+  File "/usr/lib/python2.7/subprocess.py", line 223, in check_output
+    raise CalledProcessError(retcode, cmd, output=output)
+CalledProcessError: Command '['xdotool search --onlyvisible --name "Python Stop watch"']' returned non-zero exit status 1
+
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+count
+[INFO] [1616707584.286754, 0.000000]: Config set to 1.0
+[INFO] [1616707584.073299, 0.000000]: Reconfigure Request: 1.0
+[INFO] [1616707583.391900, 0.000000]: Controller Spawner: Waiting for service controller_manager/load_controller
+[INFO] [1616707586.406161, 0.346000]: Controller Spawner: Waiting for service controller_manager/switch_controller
+[INFO] [1616707586.408212, 0.346000]: Controller Spawner: Waiting for service controller_manager/unload_controller
+[INFO] [1616707586.410214, 0.346000]: Loading controller: rear_left_wheel_velocity_controller
+[INFO] [1616707586.438888, 0.375000]: Loading controller: rear_right_wheel_velocity_controller
+[INFO] [1616707586.459671, 0.396000]: Loading controller: front_left_wheel_velocity_controller
+[INFO] [1616707586.481409, 0.418000]: Loading controller: front_right_wheel_velocity_controller
+[INFO] [1616707586.509206, 0.446000]: Loading controller: front_left_hinge_position_controller
+[INFO] [1616707586.532941, 0.470000]: Loading controller: front_right_hinge_position_controller
+[INFO] [1616707586.554664, 0.491000]: Loading controller: joint_state_controller
+[INFO] [1616707586.563864, 0.501000]: Controller Spawner: Loaded controllers: rear_left_wheel_velocity_controller, rear_right_wheel_velocity_controller, front_left_wheel_velocity_controller, front_right_wheel_velocity_controller, front_left_hinge_position_controller, front_right_hinge_position_controller, joint_state_controller
+[INFO] [1616707586.567764, 0.505000]: Started controllers: rear_left_wheel_velocity_controller, rear_right_wheel_velocity_controller, front_left_wheel_velocity_controller, front_right_wheel_velocity_controller, front_left_hinge_position_controller, front_right_hinge_position_controller, joint_state_controller
+[INFO] [1616707603.894371, 17.075000]: Shutting down spawner. Stopping and unloading controllers...
+[INFO] [1616707603.895415, 17.076000]: Stopping all controllers...
+[INFO] [1616707603.898619, 17.080000]: Unloading all loaded controllers...
+[INFO] [1616707603.899637, 17.081000]: Trying to unload joint_state_controller
+[INFO] [1616707603.903291, 17.084000]: Succeeded in unloading joint_state_controller
+[INFO] [1616707603.904403, 17.086000]: Trying to unload front_right_hinge_position_controller
+[INFO] [1616707603.909838, 17.091000]: Succeeded in unloading front_right_hinge_position_controller
+[INFO] [1616707603.910640, 17.092000]: Trying to unload front_left_hinge_position_controller
+[INFO] [1616707603.915484, 17.097000]: Succeeded in unloading front_left_hinge_position_controller
+[INFO] [1616707603.916235, 17.097000]: Trying to unload front_right_wheel_velocity_controller
+[INFO] [1616707603.921053, 17.102000]: Succeeded in unloading front_right_wheel_velocity_controller
+[INFO] [1616707603.921832, 17.102000]: Trying to unload front_left_wheel_velocity_controller
+[INFO] [1616707603.927113, 17.108000]: Succeeded in unloading front_left_wheel_velocity_controller
+[INFO] [1616707603.927992, 17.109000]: Trying to unload rear_right_wheel_velocity_controller
+[INFO] [1616707603.932856, 17.114000]: Succeeded in unloading rear_right_wheel_velocity_controller
+[INFO] [1616707603.933708, 17.115000]: Trying to unload rear_left_wheel_velocity_controller
+[INFO] [1616707603.938660, 17.120000]: Succeeded in unloading rear_left_wheel_velocity_controller
+Traceback (most recent call last):
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/command_Superimposition.py", line 69, in <module>
+    init_player()
+  File "/home/sakamoto/catkin_ws/src/ai_race/ai_race/sim_environment/scripts/command_Superimposition.py", line 66, in init_player
+    r.sleep()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/timer.py", line 103, in sleep
+    sleep(self._remaining(curr_time))
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/timer.py", line 165, in sleep
+    raise rospy.exceptions.ROSInterruptException("ROS shutdown request")
+rospy.exceptions.ROSInterruptException: ROS shutdown request
+[INFO] [1616707586.035458, 0.000000]: Config set to 1.0
